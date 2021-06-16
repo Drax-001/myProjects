@@ -1,54 +1,60 @@
 import React, { useState } from "react";
 import { data } from "./proj";
+import Category from "./Category";
+
+const category = [
+  ...new Set(data.map((category) => category.category.toLowerCase())),
+];
 
 const Project = () => {
-  const [proj, setProj] = useState(data);
-  const removeProj = (id) => {
-    let remainingProj = proj.filter((card) => card.id !== id);
-    setProj(remainingProj);
-  };
+  const [projects, setProjects] = useState(data);
+  const [selectedCategory, setSelectedCategory] = useState(projects);
 
   return (
     <>
-      <header>
-        <h1>My Projects</h1>
-      </header>
-      {proj.map((project) => {
-        const { id, img, name, tech, projLink } = project;
-        return (
-          <div key={id} className="card">
-            <div className="header">
-              <a
-                href={projLink}
-                target="_blank"
-                rel="noreferrer"
-                className="projName"
-              >
-                {name}
-              </a>
+      <Category
+        category={category}
+        data={projects}
+        handleCategory={setSelectedCategory}
+      />
+      <div className="projectList">
+        {/* mapping my projects */}
+        {selectedCategory.map((project, index) => {
+          const { id, img, name, tech, projLink } = project;
+          return (
+            <div key={id} className="project">
+              <div className="project-header">
+                <h2>{name}</h2>
+              </div>
+              <div className="project-body">
+                <div className="project-image">
+                  <img src={img} alt={name} className="projImg" />
+                </div>
+                <div className="project-detail">
+                  <p className="tech"> {tech} </p>
+                </div>
+              </div>
+              <div className="project-footer">
+                <div className="project-number">
+                  <p className="count">
+                    {index + 1} / {projects.length}
+                  </p>
+                </div>
+                <div className="visit-project">
+                  <a
+                    className="project-link"
+                    href={projLink}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    View Project
+                  </a>
+                </div>
+              </div>
             </div>
-            <div className="imagecont">
-              <img className="img" src={img} alt={name} />
-            </div>
-            <div className="info">
-              <h3 className="tech">Using: {tech}</h3>
-            </div>
-            <div className="btnCont">
-              <a
-                href={projLink}
-                target="_blank"
-                rel="noreferrer"
-                className="btn"
-              >
-                View Project
-              </a>
-              <button className="btn remove" onClick={() => removeProj(id)}>
-                Completed
-              </button>
-            </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </>
   );
 };

@@ -1,153 +1,157 @@
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-html,
-body {
+:root {
+  --theme: #292828;
+  --shade: #e1e1e1;
+  --border: #3d3d3d;
+  --bgColor: #dbeeff;
+}
+
+html, body {
   height: 100%;
   width: 100%;
-  font-family: Acme;
-  background-color: #d8d8d8;
-}
-
-button {
-  cursor: pointer;
-  background-color: transparent;
-  font-size: 15px;
-  font-weight: 600;
+  background-color: var(--bgColor);
+  font-family: monospace;
 }
 
 header {
+  width: fit-content;
+  margin: auto;
+  padding: 4px 20px;
+  color: var(--theme);
+  border-bottom: 2px solid var(--theme);
+  margin-bottom: 20px;
+}
+
+.projectList {
+  width: 85%;
+  margin: auto;
   display: flex;
-  align-items: center;
   justify-content: center;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  color: #fff;
-  background-color: #4c4d4f;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  flex-wrap: wrap;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: 500ms ease-in-out;
-}
-
-.main {
-  width: 100%;
+.project {
+  width: 350px;
   height: fit-content;
   display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  position: absolute;
-  top: 60px;
-}
-
-.card {
-  background-color: #fff;
-  box-shadow: 0 3px 6px 3px #ccc;
-  margin: 10px;
-  width: 400px;
-  padding: 20px;
-  display: flex;
-  align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 10px;
+  margin: 20px 15px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background-color: #fff;
 }
 
-.imageCont {
-  width: 100%;
-  height: 50%;
-}
-
-.img {
-  width: 100%;
-  height: 100%;
-}
-
-.header {
-  width: 100%;
+.project-header {
+  width: fit-content;
   height: 30px;
-  font-size: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 20px;
+  border-bottom: 1px solid var(--theme);
+  margin: auto;
+  padding: 1px 20px;
   margin-bottom: 10px;
 }
 
-.info {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 15px;
+.project-body {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.project-image {
+  width: 100%;
+  height: 150px;
+}
+
+.projImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-detail {
+  margin-top: 20px;
 }
 
 .tech {
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 800;
 }
 
-.btnCont {
+.project-footer {
   width: 100%;
+  margin: auto;
+  margin-top: 10px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+  border-top: 1px solid var(--theme);
+  padding: 5px 20px;
+}
+
+.visit-project {
   margin-top: 10px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
-.btn {
-  padding: 3px 20px 3px 20px;
-  border: 1px solid #4c4d4f;
-  color: #4c4d4f;
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-link {
   border-radius: 10px;
-  transition: 500ms ease-in-out;
+  padding: 3px 20px;
+  transition: 300ms ease-in-out;
 }
 
-.btn:active {
-  animation: click 500ms cubic-bezier(0.215, 0.610, 0.355, 1);
+.project-link:hover {
+  cursor: pointer;
+  background-color: var(--theme);
+  color: #fff;
 }
 
-.icon {
-  margin-right: 10px;
+.category-buttons {
+  width: fit-content;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
-.btn:hover {
-  background-color: #4c4d4f;
-  color: #d1d1d1;
+.category-button {
+  margin: 5px 4px;
+  width: fit-content;
+  padding: 4px 20px;
+  background-color: transparent;
+  border: 2px solid var(--theme);
+  outline: none;
+  border-radius: 10px;
+  transition: 200ms ease-in-out;
 }
 
-.header>a:hover {
-  color: #4c4d4f;
-  text-decoration: underline;
+.category-button:hover {
+  background-color: var(--theme);
+  color: #fff;
+  cursor: pointer;
 }
 
-.btn:hover {
-  background-color: #4c4d4f;
-  color: #d1d1d1;
+.project-number {
+  
+  padding: 3px 20px;
 }
 
-.remove {
-  padding: 6px 20px 6px 20px;
-  margin-left: 10px;
+.count {
+  margin: 3px 20px;
 }
 
-.header>button:hover {
-  color: #4c4d4f;
-  text-decoration: underline;
-}
-
-@keyframes click {
-  from {
-    transform: scale(0.85);
-  }
-  to {
-    transform: scale(1);
-  }
+.total {
+  text-align: center;
+  margin-top: 10px;
 }
